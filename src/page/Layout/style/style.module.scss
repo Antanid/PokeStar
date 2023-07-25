@@ -1,0 +1,43 @@
+.layout_main{
+.menu_Main {
+    background-color: rgba(248, 173, 61, 0.848);
+    height: 90px;
+    display: flex;
+    align-items: center;
+
+    .menu_imgBlock {
+        cursor: pointer;
+
+        img {
+            margin: 0 20px 0 50px;
+            width: 60px;
+
+        }
+
+    }
+
+    .menu_ul {
+        display: flex;
+        list-style-type: none;
+
+        a {
+            text-decoration: none;
+            margin-left: 30px;
+            color: white;
+            cursor: pointer;
+           
+        }
+
+    }
+}
+
+.footer_block {
+padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: gray;
+    color: white;
+}
+}
