@@ -14,8 +14,10 @@ import {
   setSingleShinyBack,
   setSingleShinyFront,
   setSingleStats,
+  setSingleTypes,
   setSingleWeight,
 } from "../../redux/SinglePoke/SinglePokeSlice";
+import arrowImg from '../../assets/img/arrow.png'
 
 const SinglePokePage = () => {
 
@@ -30,9 +32,10 @@ const SinglePokePage = () => {
   const backImage = useSelector (setSingleBackImg);
   const backShinyImage = useSelector (setSingleShinyBack);
   const frontShinyImage = useSelector (setSingleShinyFront);
+  const pokemonTypes = useSelector (setSingleTypes);
 
   const [loading, setLoading] = useState(true);
-  const [test, setTest] = useState(false);
+  const [boolTypes, setBoolTypes] = useState(false);
   const [typeSprites, setTypeSprites] = useState('default');
   const [spritesImg, setSpritesImg] = useState(frontImage);
   const id = useSelector(setSingleId);
@@ -54,13 +57,10 @@ const SinglePokePage = () => {
     setSpritesImg(frontImage);
   }, [frontImage])
 
-  console.log(test)
-  console.log(typeSprites)
-
   const onFrontImage = () => {
     if(frontImage !== null){
-      setTest(prev => !prev)
-      if(test === true){
+      setBoolTypes(prev => !prev)
+      if(boolTypes === true){
         setSpritesImg(typeSprites === 'default' ? frontImage : frontShinyImage)
       }
       else{
@@ -86,6 +86,8 @@ const SinglePokePage = () => {
         <Loader />
       ) : (
         <SinglePoke
+        pokemonTypes={pokemonTypes}
+        arrowImg={arrowImg}
         onShiny={onShiny}
         onDefault={onDefault}
         frontImage={frontImage}

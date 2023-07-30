@@ -56,11 +56,9 @@ const PokemonsPage = () => {
     }
   };
   const onOpenPage = (url: string) => {
-    console.log(url)
     dispatch(addId(url.split("/").reverse()[1]));
   };
   const onOpenPageSingle = (url: string) => {
-    console.log(url)
     dispatch(addId(url));
   };
 

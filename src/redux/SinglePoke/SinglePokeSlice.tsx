@@ -10,6 +10,7 @@ const initialState = {
     spritesBack: '',
     spritesShinyFront: '',
     spritesShinyBack: '',
+    types: [],
     stats: [],
     abilities: [],
     height: 0,
@@ -35,16 +36,18 @@ const SinglePoke = createSlice({
             state.abilities = [];
             state.height = 0;
             state.weight = 0;
+            state.types = [];
         });
         builder.addCase(fetchSinglePoke.fulfilled, (state, action : any) => {
             state.name = action.payload.name;
             state.image = action.payload.sprites.other.dream_world.front_default;
+
             state.spritesFront = action.payload.sprites.front_default;
             state.spritesBack = action.payload.sprites.back_default;
-
             state.spritesShinyBack = action.payload.sprites.back_shiny;
             state.spritesShinyFront = action.payload.sprites.front_shiny;
 
+            state.types = action.payload.types;
             state.stats = action.payload.stats;
             state.abilities = action.payload.abilities;
             state.height = action.payload.height;
@@ -59,6 +62,7 @@ const SinglePoke = createSlice({
             state.image = '';
             state.spritesFront = '';
             state.spritesBack = '';
+            state.types = [];
             state.stats = [];
             state.status = Status.ERROR;
         })
@@ -78,5 +82,6 @@ export const setSingleFrontImg = (state: RootState) => state.SinglePoke.spritesF
 export const setSingleBackImg = (state: RootState) => state.SinglePoke.spritesBack;
 export const setSingleShinyBack = (state: RootState) => state.SinglePoke.spritesShinyBack;
 export const setSingleShinyFront = (state: RootState) => state.SinglePoke.spritesShinyFront;
+export const setSingleTypes = (state: RootState) => state.SinglePoke.types;
 
 export default SinglePoke.reducer;
