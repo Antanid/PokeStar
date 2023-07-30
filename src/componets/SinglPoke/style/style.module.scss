@@ -1,0 +1,19 @@
+.single_mainBlock {
+    margin-top: 50px;
+    text-align: center;
+    align-items: center;
+
+      .single_info_imgText {
+        margin-left: 10px;
+        background-color: #dee3ed;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        border: 1px solid rgb(175, 173, 173);
+        padding: 10px;
+        border-radius: 10px;
+      }
+   .single_spritesImg{
+    img{
+      width: 300px
+    }
+   }
+}

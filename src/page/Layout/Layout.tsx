@@ -23,12 +23,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       link: 'PokemonTV',
       id: 2
     },
+    
   ]);
   return (
     <div className={style.layout_main}>
       <Menu menu={menu} headerImg={headerImg} />
       <div>{children}</div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

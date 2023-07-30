@@ -1,11 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from 'react-redux';
 import PokemonSlice from './Pokemons/PokemonsSlice';
+import SinglePoke from './SinglePoke/SinglePokeSlice'
+import SearchSlice from './Search/SearchSlice'
 
 
 export const store = configureStore({
     reducer: {
-        PokemonSlice
+        PokemonSlice,
+        SinglePoke,
+        SearchSlice
     }
 })
 

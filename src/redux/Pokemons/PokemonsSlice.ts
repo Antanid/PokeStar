@@ -20,6 +20,8 @@ const PokemonSlice = createSlice({
         builder.addCase (fetchPokemons.pending, (state) => {
             state.status = Status.LOADING;
             state.pokemons = [];
+            state.nextPage = null;
+            state.prevPage = null;
         });
         builder.addCase(fetchPokemons.fulfilled, (state, action : any) => {
             state.pokemons = action.payload.results;
@@ -29,6 +31,8 @@ const PokemonSlice = createSlice({
         })
         builder.addCase(fetchPokemons.rejected, (state) => {
             state.pokemons = [];
+            state.nextPage = null;
+            state.prevPage = null;
             state.status = Status.ERROR;
         })
     }
@@ -37,6 +41,5 @@ const PokemonSlice = createSlice({
 export const setPokemons = (state: RootState) => state.PokemonSlice.pokemons;
 export const setNextPage = (state: RootState) => state.PokemonSlice.nextPage;
 export const setPrevPage = (state: RootState) => state.PokemonSlice.prevPage;
-
 
 export default PokemonSlice.reducer;

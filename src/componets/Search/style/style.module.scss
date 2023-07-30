@@ -1,0 +1,31 @@
+.search_mainBlock{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    .search_input{
+        border: 1px solid  #dee3ed;
+        padding: 5px;
+        border-radius: 10px;
+     
+        margin: 0;
+        &:focus{
+            outline: none;
+            border-color:  #8a8b8c;
+        }
+        &::-webkit-inner-spin-button{
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+    button{
+    border: none;
+        border-radius: 10px;
+        width: 100px;
+        padding: 10px;
+        margin: 0 5px;
+        &:hover {
+            background-color: rgba(248, 173, 61, 0.848);
+            transition: all 0.3s ease-in;
+        }
+    }
+}
