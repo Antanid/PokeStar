@@ -15,7 +15,6 @@ const initialState = {
     abilities: [],
     height: 0,
     weight: 0,
-    id: 1,
     status: Status.LOADING
 }
 
@@ -23,9 +22,6 @@ const SinglePoke = createSlice({
     name: 'SinglePoke',
     initialState,
     reducers: {
-        addId (state, action) {
-            state.id = action.payload
-        }
     },
     extraReducers: (builder) => {
         builder.addCase (fetchSinglePoke.pending, (state) => {
@@ -69,9 +65,7 @@ const SinglePoke = createSlice({
     }
 })
 
-export const {addId} = SinglePoke.actions;
 
-export const setSingleId = (state: RootState) => state.SinglePoke.id;
 export const setSingleName = (state: RootState) => state.SinglePoke.name;
 export const setSingleImage = (state: RootState) => state.SinglePoke.image;
 export const setSingleStats = (state: RootState) => state.SinglePoke.stats;

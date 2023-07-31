@@ -77,6 +77,11 @@ img{
           border-color: red;
           transition: 0.3s ease-in-out;
         }
+        &:disabled{
+          opacity: 0.5;
+          cursor: auto;
+          pointer-events: none;
+        }
       }
 
       .fronButton {
@@ -175,5 +180,13 @@ img{
 
     }
   }
+}
 
+@media(max-width: 600px){
+  .single_mainBlock{
+    .single_meinStats{
+      display: block;
+      align-items: center;
+    }
+  }
 }

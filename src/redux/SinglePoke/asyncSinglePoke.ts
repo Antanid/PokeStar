@@ -8,6 +8,5 @@ type TypeSinglePoke = {
 export const fetchSinglePoke = createAsyncThunk('SinglePoke/fetchSinglePoke', async(params: TypeSinglePoke) => {
     const {id} = params;
     const fetchData = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-    console.log(fetchData.data)
     return fetchData.data
 })

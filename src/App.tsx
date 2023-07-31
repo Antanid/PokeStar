@@ -1,15 +1,13 @@
 import { lazy, Suspense } from "react";
-import { useSelector } from "react-redux";
-import { Route, Routes } from "react-router";
+import { Route, Routes, useLocation } from "react-router";
 
 import Layout from "./page/Layout/Layout";
-import { setSingleId } from "./redux/SinglePoke/SinglePokeSlice";
 const PokemonsPage = lazy(() => import("./page/PokemonsPage/PokemonsPage"));
 const PokemonTVPage = lazy(() => import("./page/TvPage/TvPage"));
 const SinglePokePage = lazy(() => import("./page/SinglePokePage/SinglePokePage"));
 
 function App() {
-  const id = useSelector(setSingleId)
+  const {pathname} = useLocation();
   return (
     <div className="App">
       <Layout>
@@ -31,7 +29,7 @@ function App() {
             }
           />
           <Route
-            path={`pokemons/${id}`}
+            path={pathname}
             element={
               <Suspense>
                 <SinglePokePage />

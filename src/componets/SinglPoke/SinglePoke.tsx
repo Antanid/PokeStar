@@ -21,7 +21,7 @@ type SinglePokeType = {
     is_hidden: boolean;
     slot: number;
   }[];
-  id: number;
+  id: string;
   spritesImg: string;
   onFrontImage: () => void;
   frontImage: string;
@@ -35,6 +35,8 @@ type SinglePokeType = {
       url: string,
     }
   }[];
+  backImage: string,
+  frontShinyImage: string
 };
 
 const SinglePoke: React.FC<SinglePokeType> = ({
@@ -52,8 +54,9 @@ const SinglePoke: React.FC<SinglePokeType> = ({
   onShiny,
   arrowImg,
   pokemonTypes,
+  backImage,
+  frontShinyImage,
 }) => {
-  console.log(pokemonTypes);
   return (
     <div className={style.single_mainBlock}>
       <div className={style.single_meinStats}>
@@ -88,12 +91,13 @@ const SinglePoke: React.FC<SinglePokeType> = ({
 
       <div className={style.single_spritesImg}>
         <div className={style.spritesBut}>
-          <button className={style.fronButton} onClick={onFrontImage}>
+          <button disabled={backImage !==null ? false : true} className={style.fronButton} onClick={onFrontImage}>
             <img src={arrowImg} alt="fronImg" />
           </button>
-          <button onClick={onDefault}>Default</button>
-          <button onClick={onShiny}>Shiny</button>
-          <button className={style.backButton} onClick={onFrontImage}>
+          <button disabled={frontImage !== null ? false : true} onClick={onDefault}>Default</button>
+          <button disabled={frontShinyImage !== null ? false : true} onClick={onShiny}>Shiny</button>
+          <button disabled={backImage !==null ? false : true} 
+          className={style.backButton} onClick={onFrontImage}>
             <img src={arrowImg} alt="backImg" />
           </button>
         </div>

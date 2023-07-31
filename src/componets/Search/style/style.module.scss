@@ -29,3 +29,10 @@
         }
     }
 }
+@media(max-width: 400px) {
+  .search_mainBlock{
+    .search_input{
+        width: 100%;
+    }
+  }  
+}

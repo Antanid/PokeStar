@@ -7,7 +7,6 @@ import SearchPoke from "../../componets/Search/SearchPoke";
 import { fetchPokemons } from "../../redux/Pokemons/asyncPokemons";
 import { setNextPage, setPokemons, setPrevPage } from "../../redux/Pokemons/PokemonsSlice";
 import { setSearchPokemons } from "../../redux/Search/SearchSlice";
-import { addId } from "../../redux/SinglePoke/SinglePokeSlice";
 
 const PokemonsPage = () => {
   const [paramsApi, setParamsApi] = useState("https://pokeapi.co/api/v2/pokemon");
@@ -55,12 +54,7 @@ const PokemonsPage = () => {
       setParamsApi(prevPage);
     }
   };
-  const onOpenPage = (url: string) => {
-    dispatch(addId(url.split("/").reverse()[1]));
-  };
-  const onOpenPageSingle = (url: string) => {
-    dispatch(addId(url));
-  };
+
 
   return (
     <div>
@@ -69,12 +63,12 @@ const PokemonsPage = () => {
         <Loader />
       ) :
        input.length > 0 ? (
-        <AllPokemons onOpenPage={onOpenPageSingle} dataPokemons={searchRes} />
+        <AllPokemons dataPokemons={searchRes} />
       ) : 
       (
         <>
           {" "}
-          <AllPokemons onOpenPage={onOpenPage} dataPokemons={dataPokemons} />
+          <AllPokemons dataPokemons={dataPokemons} />
           <PokeButton onNextPage={onNextPage} onPrevPage={onPrevPage} />
         </>
       )}

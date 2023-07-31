@@ -8,7 +8,6 @@ import {
   setSingleBackImg,
   setSingleFrontImg,
   setSingleHeight,
-  setSingleId,
   setSingleImage,
   setSingleName,
   setSingleShinyBack,
@@ -18,6 +17,7 @@ import {
   setSingleWeight,
 } from "../../redux/SinglePoke/SinglePokeSlice";
 import arrowImg from '../../assets/img/arrow.png'
+import { useLocation } from "react-router";
 
 const SinglePokePage = () => {
 
@@ -38,8 +38,9 @@ const SinglePokePage = () => {
   const [boolTypes, setBoolTypes] = useState(false);
   const [typeSprites, setTypeSprites] = useState('default');
   const [spritesImg, setSpritesImg] = useState(frontImage);
-  const id = useSelector(setSingleId);
   const dispatch = useDispatch();
+  const urlParamsSingle = useLocation();
+  const id = urlParamsSingle.pathname.split('/').reverse()[0]
 
 
 
@@ -58,7 +59,7 @@ const SinglePokePage = () => {
   }, [frontImage])
 
   const onFrontImage = () => {
-    if(frontImage !== null){
+    if(backImage !== null){
       setBoolTypes(prev => !prev)
       if(boolTypes === true){
         setSpritesImg(typeSprites === 'default' ? frontImage : frontShinyImage)
@@ -71,8 +72,11 @@ const SinglePokePage = () => {
   }
 
   const onShiny = () => {
-    setTypeSprites('shiny')
-    setSpritesImg(frontShinyImage)
+    if(frontShinyImage !== null){
+      setTypeSprites('shiny')
+      setSpritesImg(frontShinyImage)
+    }
+    
   }
 
   const onDefault = () => {
@@ -86,6 +90,8 @@ const SinglePokePage = () => {
         <Loader />
       ) : (
         <SinglePoke
+        frontShinyImage={frontShinyImage}
+        backImage={backImage}
         pokemonTypes={pokemonTypes}
         arrowImg={arrowImg}
         onShiny={onShiny}
