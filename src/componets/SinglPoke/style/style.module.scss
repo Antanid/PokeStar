@@ -14,10 +14,27 @@
     padding: 10px;
     border-radius: 10px;
 .single_info_imgText{
+  h1{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button{
+      margin-left: 5px;
+      cursor: pointer;
+      border: none;
+      background-image: none; 
+      background: transparent;
+      background-color: transparent;
+      img{
+        width: 32px;
+      }
+    }
   span{
     color: #838181;
    padding-left: 10px;
   }
+}
 img{
   width: 250px;
 }

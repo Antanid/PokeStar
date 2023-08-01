@@ -18,6 +18,9 @@ import {
 } from "../../redux/SinglePoke/SinglePokeSlice";
 import arrowImg from '../../assets/img/arrow.png'
 import { useLocation } from "react-router";
+import { addFavorite, setFavorite } from "../../redux/FavoritePoke/FavoriteSlice";
+import noFavoriteImg from '../../assets/img/no_favorite.png';
+import FavoriteImg from '../../assets/img/favorite.png';
 
 const SinglePokePage = () => {
 
@@ -33,6 +36,7 @@ const SinglePokePage = () => {
   const backShinyImage = useSelector (setSingleShinyBack);
   const frontShinyImage = useSelector (setSingleShinyFront);
   const pokemonTypes = useSelector (setSingleTypes);
+  const favoriteData = useSelector(setFavorite);
 
   const [loading, setLoading] = useState(true);
   const [boolTypes, setBoolTypes] = useState(false);
@@ -41,7 +45,6 @@ const SinglePokePage = () => {
   const dispatch = useDispatch();
   const urlParamsSingle = useLocation();
   const id = urlParamsSingle.pathname.split('/').reverse()[0]
-
 
 
   useEffect(() => {
@@ -84,12 +87,31 @@ const SinglePokePage = () => {
     setSpritesImg(frontImage)
   }
 
+  const imgFavoriteSwap = favoriteData.filter((obj: any) => obj.id === id).length === 0 ? false : true;
+
+  const onFavoriteClick = () => {
+    const newObj = {
+      name: name,
+      image: image,
+      spritesFront: frontImage,
+      spritesBack: backImage,
+      spritesShinyFront: frontShinyImage,
+      spritesShinyBack: backShinyImage,
+      id: id
+    }
+dispatch(addFavorite(newObj))
+  };
+
   return (
     <div>
       {loading ? (
         <Loader />
       ) : (
         <SinglePoke
+        FavoriteImg={FavoriteImg}
+        imgFavoriteSwap={imgFavoriteSwap}
+        noFavoriteImg={noFavoriteImg}
+        onFavoriteClick={onFavoriteClick}
         frontShinyImage={frontShinyImage}
         backImage={backImage}
         pokemonTypes={pokemonTypes}

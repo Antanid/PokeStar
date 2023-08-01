@@ -37,7 +37,7 @@ const SinglePoke = createSlice({
         builder.addCase(fetchSinglePoke.fulfilled, (state, action : any) => {
             state.name = action.payload.name;
             state.image = action.payload.sprites.other.dream_world.front_default;
-
+      
             state.spritesFront = action.payload.sprites.front_default;
             state.spritesBack = action.payload.sprites.back_default;
             state.spritesShinyBack = action.payload.sprites.back_shiny;

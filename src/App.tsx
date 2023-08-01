@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from "react-router";
 
 import Layout from "./page/Layout/Layout";
 const PokemonsPage = lazy(() => import("./page/PokemonsPage/PokemonsPage"));
-const PokemonTVPage = lazy(() => import("./page/TvPage/TvPage"));
+const FavoritePage = lazy(() => import("./page/FavoritePage/FavoritePage"));
 const SinglePokePage = lazy(() => import("./page/SinglePokePage/SinglePokePage"));
 
 function App() {
@@ -21,10 +21,10 @@ function App() {
             }
           />
           <Route
-            path="pokemonTV"
+            path="favorite"
             element={
               <Suspense>
-                <PokemonTVPage />
+                <FavoritePage />
               </Suspense>
             }
           />

@@ -4,8 +4,6 @@ import style from "./style/style.module.scss";
 
 import Menu from "./Menu";
 import headerImg from "../../assets/img/headerImg.png";
-import Footer from "./Footer";
-
 
 type LayoutProps = {
   children: JSX.Element|JSX.Element[];
@@ -19,8 +17,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       id: 1
     },
     {
-      title: "PokemonTV",
-      link: 'PokemonTV',
+      title: "Favorite",
+      link: 'favorite',
       id: 2
     },
     
